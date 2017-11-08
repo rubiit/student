@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>登录页面</title>
+	<script src='../js/jquery-3.0.0.min.js'></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.userInfo{
+			width: 350px;
+			height: 650px;
+			margin: 0 auto;
+			z-index: 0;
+			overflow: hidden;
+		}
+		.userInfo .icon{
+			width: 350px;
+			height: 50px;
+			margin: 70px 0 20px;
+			text-align: center;
+			line-height: 50px;
+			font-size: 30px;
+		}
+		.userInfo input{
+			width: 290px;
+			height: 50px;
+			margin: 10px 24px;
+			border: 1px solid #eee;
+			border-radius: 5px;
+			padding-left: 10px;
+		}
+		.userInfo button{
+			display: block;
+			width: 300px;
+			height: 50px;
+			background-color: #4cd96f;
+			border-radius: 5px;
+			margin: 24px;
+			color: #fff;
+			text-align: center;
+			border: none;
+		}
+		.userInfo .reg{
+			margin: 24px;
+			text-align: center;
+		}
+		.userInfo .reg a{
+			margin: 0 20px;
+			text-decoration: none;
+			color: #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="userInfo">
+		<div class="icon">Login In</div>
+		<div class="user">
+			<input type="text" name="username" placeholder="手机/邮箱/用户名">
+		</div>
+		<div class="pwd">
+			<input type="password" name="password" placeholder="密码">
+		</div>
+		<button>登录</button>
+
+		<div class="reg">
+			<a href="register.html">注册</a>
+			<a href="">忘记密码</a>
+		</div>
+	</div>
+
+
+	<script>
+		$(function(){
+			$("button").on("click",function(){
+				var username = $("input:text").val();
+				var password = $("input:password").val();
+				var url = "http://127.0.0.1:3000/user/login";
+				$.post(url,{username,password},function(data){
+					$("input:text").val("");
+                    $("input:password").val("");
+					window.location = './index.html';
+				});
+			});
+		});
+	</script>
+</body>
+</html>
